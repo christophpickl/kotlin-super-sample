@@ -1,23 +1,13 @@
-# Compiled class file
-*.class
+### Gradle ###
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+/buildSrc/build/
 
-# Log file
-*.log
+/server-ktor/build/
+/server-ktor/server-ktor-api/build/
+/server-ktor/server-ktor-app/build/
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+### IntelliJ IDEA ###
+.idea
+/out/
