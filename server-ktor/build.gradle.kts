@@ -5,8 +5,6 @@ plugins {
 }
 
 subprojects {
-    group = "com.github.christophpickl.kss"
-    version = "1.0"
 
     repositories {
         mavenCentral()
@@ -30,6 +28,18 @@ subprojects {
                 )
             }
         }
+
+        withType<Test> {
+            testLogging {
+                exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+//            showStandardStreams = true // enable for more details
+            }
+            useTestNG {
+                parallel = "classes"
+                threadCount = 5
+            }
+        }
+
     }
 
 }

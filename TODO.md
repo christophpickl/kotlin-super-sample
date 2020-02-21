@@ -1,8 +1,6 @@
 ## server
 
-* test infrastructure
+* kodein
+* exception handling (ApiError)
+* detekt
 * deploy and run in cloud
-
-## client
-
-* simple JS kotlin client
