@@ -3,6 +3,8 @@ package kss.server.app
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
+import io.ktor.features.CORS
+import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.jackson.jackson
 import io.ktor.response.respond
@@ -18,7 +20,7 @@ object App {
     @JvmStatic
     fun main(args: Array<String>) {
         log.info { "Starting up server ..." }
-        embeddedServer(Netty, port = 8080) {
+        embeddedServer(Netty, port = 9090) {
             kssModule()
         }.start(wait = true)
     }
@@ -28,12 +30,17 @@ fun Application.kssModule() {
     install(ContentNegotiation) {
         jackson { }
     }
+    install(CallLogging)
+    install(CORS) {
+        host("localhost:8080") // allow local Kotlin/JS to access this via CORS headers
+    }
+
     routing {
         get {
-            call.respond(ClassRto(
+            call.respond(listOf(ClassRto(
                 id = "dummyId",
                 title = "dummy title"
-            ))
+            )))
         }
     }
 }

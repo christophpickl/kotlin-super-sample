@@ -8,6 +8,8 @@
 /server-ktor/server-ktor-api/build/
 /server-ktor/server-ktor-app/build/
 
+/client-js/build/
+
 ### IntelliJ IDEA ###
 .idea
 /out/

@@ -6,11 +6,6 @@ plugins {
 
 subprojects {
 
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
-
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
     dependencies {
