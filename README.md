@@ -1,40 +1,39 @@
 # Kotlin Super Sample
 
-full fledged kotlin ktor microservice sample, along with some kotlin clients. go pure kotlin. rock kotlin.
+A full fledged microservice sample along with some client, everything written in Kotlin 🙌🏻
 
+## Tech Stack Server Side
 
-## Tech Stack
-
-- ktor (allesmoegliche an potenz rausholen was geht)
-- kodein
-- exposed
+- [Ktor](https://ktor.io/) ... Web Service
+- [Kodein](https://kodein.org/) ... Dependency Injection
+- [Exposed](https://github.com/JetBrains/Exposed) ... Persistence Layer
 - kotlinx.serialization
-- irgendeine gscheite alternative zu swagger/openapi?
+- OpenAPI/Swagger? Any alternative to it?
 
 ## Design, Architecture
 
-- event sourcing
-- DDD
-- BDD
-- real!!! ReST: hypermedia, links, maturity level!
-
+- Real ReST! (hypermedia, links, maturity level)
+- Event Sourcing, CQRS
+- Ports and Adapters / Hexagonal Architecture
+- DDD ... Domain Driven Development
+- BDD ... Behavioural Driven Development
 
 ## Build, Deploy, Run
 
-- kscript
-- detekt
-- todo plugin
-- opensource coverage
+- [Travis CI](https://travis-ci.org) ... Opensource cloud build
+- Docker
+- [AWS](https://aws.amazon.com/) ... Online cloud hosting
+- KScript
+- Coverage (opensource)
 - dependency version check (versioneye)
-- travis CI
-- docker
-- deploy to... heroku?
+- Todo plugin
+- Detekt ... Static code analysis
 
 
 ## Clients
 
-1. html/kotlin DSL
-1. JS/kotlin
-1. android/kotlin
-1. native/kotlin (iOS)
-1. desktop client mit TornadoFX
+1. HTML/Kotlin DSL
+1. Kotlin/JS
+1. Kotlin/Android
+1. Kotlin/Native (iOS)
+1. [TornadoFx](https://tornadofx.io/) ... Desktop Client

@@ -9,10 +9,12 @@ import io.ktor.features.ContentNegotiation
 import io.ktor.jackson.jackson
 import io.ktor.response.respond
 import io.ktor.routing.get
+import io.ktor.routing.route
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import kss.server.api.ClassRto
+import kss.sharedlib.common.ClassRto
+import kss.sharedlib.common.UserRto
 import mu.KotlinLogging.logger
 
 object App {
@@ -35,12 +37,24 @@ fun Application.kssModule() {
         host("localhost:8080") // allow local Kotlin/JS to access this via CORS headers
     }
 
+
+
     routing {
-        get {
-            call.respond(listOf(ClassRto(
-                id = "dummyId",
-                title = "dummy title"
-            )))
+        route("/users") {
+            get {
+                call.respond(listOf(UserRto(
+                    id = "dummyId",
+                    name = "maxmuster"
+                )))
+            }
+        }
+        route("/classes") {
+            get {
+                call.respond(listOf(ClassRto(
+                    id = "dummyId",
+                    title = "dummy title"
+                )))
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ plugins {
 
 dependencies {
     implementation(kotlin("stdlib-js"))
+    implementation(project(":shared-lib"))
+
     testImplementation(kotlin("test-js"))
 }
 

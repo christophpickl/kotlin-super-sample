@@ -1,5 +1,6 @@
 dependencies {
-    implementation(project(":server-ktor:server-ktor-api"))
+    implementation(project(":server-ktor:server-ktor-domain"))
+    implementation(project(":shared-lib"))
 
     // ktor
     fun ktor(suffix: String = "") = "io.ktor:ktor$suffix:${Versions.ktor}"
@@ -21,10 +22,10 @@ dependencies {
     }
     testImplementation("org.testng:testng:${Versions.testng}")
     testImplementation("org.skyscreamer:jsonassert:${Versions.jsonassert}")
-    api("com.willowtreeapps.assertk:assertk-jvm:${Versions.assertk}")
-//    api("io.mockk:mockk:${Versions.mockk}")
-//    api("com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.jackson}")
-//    api("org.kodein.di:kodein-di-generic-jvm:${Versions.kodein}")
-//    api("com.jayway.jsonpath:json-path:${Versions.jsonPath}")
-//    api("com.github.tomakehurst:wiremock-jre8:${Versions.wiremock}")
+    testImplementation("com.willowtreeapps.assertk:assertk-jvm:${Versions.assertk}")
+//    testImplementation("io.mockk:mockk:${Versions.mockk}")
+//    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.jackson}")
+//    testImplementation("org.kodein.di:kodein-di-generic-jvm:${Versions.kodein}")
+//    testImplementation("com.jayway.jsonpath:json-path:${Versions.jsonPath}")
+//    testImplementation("com.github.tomakehurst:wiremock-jre8:${Versions.wiremock}")
 }
