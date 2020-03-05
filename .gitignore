@@ -5,8 +5,9 @@
 /buildSrc/build/
 
 /server-ktor/build/
-/server-ktor/server-ktor-api/build/
 /server-ktor/server-ktor-app/build/
+/server-ktor/server-ktor-domain/build/
+/shared-lib/build/
 
 /client-js/build/
 

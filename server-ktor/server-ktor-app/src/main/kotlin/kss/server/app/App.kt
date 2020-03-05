@@ -14,32 +14,56 @@ import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import kss.sharedlib.common.ClassRto
+import kss.sharedlib.common.HomeRto
 import kss.sharedlib.common.UserRto
 import mu.KotlinLogging.logger
+import org.kodein.di.Kodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+
+data class Konfig(
+    val port: Int,
+    val baseUrl: String
+)
 
 object App {
     private val log = logger {}
     @JvmStatic
     fun main(args: Array<String>) {
+        val konfig = Konfig(
+            port = 9090,
+            baseUrl = "http://localhost:9090"
+        )
         log.info { "Starting up server ..." }
-        embeddedServer(Netty, port = 9090) {
-            kssModule()
+        embeddedServer(Netty, port = konfig.port) {
+            kssModule(applicationKodein(konfig))
         }.start(wait = true)
     }
 }
 
-fun Application.kssModule() {
+fun applicationKodein(konfig: Konfig) = Kodein {
+    bind<Konfig>() with instance(konfig)
+}
+
+fun Application.kssModule(kodein: Kodein) {
     install(ContentNegotiation) {
         jackson { }
     }
     install(CallLogging)
     install(CORS) {
-        host("localhost:8080") // allow local Kotlin/JS to access this via CORS headers
+        anyHost() // allow local Kotlin/JS to access this via CORS headers
     }
 
-
-
+    val konfig by kodein.instance<Konfig>()
     routing {
+        route("/") {
+            get {
+                call.respond(HomeRto(
+                    usersLink = "${konfig.baseUrl}/users",
+                    classesLink = "${konfig.baseUrl}/classes"
+                ))
+            }
+        }
         route("/users") {
             get {
                 call.respond(listOf(UserRto(

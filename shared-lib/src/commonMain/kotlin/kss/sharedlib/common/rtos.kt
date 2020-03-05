@@ -5,12 +5,19 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 
 @Serializable
+data class HomeRto(
+    // make it real ReSTful via HATEOAS :)
+    val usersLink: String,
+    val classesLink: String
+)
+
+@Serializable
 data class UserRto(
     val id: String,
     val name: String
 ) {
     companion object {
-        val listSerializer = UserRto.serializer().list
+        val listSerializer = serializer().list
     }
 }
 
